@@ -1184,9 +1184,9 @@ storageS3New(
     const String *const bucket, const String *const endPoint, const StorageS3UriStyle uriStyle, const String *const region,
     const StorageS3KeyType keyType, const String *const accessKey, const String *const secretAccessKey,
     const String *const securityToken, const String *const kmsKeyId, const String *sseCustomerKey, const String *const credRole,
-    const String *const webIdTokenFile, const size_t partSize, const KeyValue *const tag, const String *host,
-    const unsigned int port, const TimeMSec timeout, const bool verifyPeer, const String *const caFile, const String *const caPath,
-    const bool requesterPays)
+    const String *const webIdTokenFile, const String *const stsHost, const size_t partSize, const KeyValue *const tag,
+    const String *host, const unsigned int port, const TimeMSec timeout, const bool verifyPeer, const String *const caFile,
+    const String *const caPath, const bool requesterPays)
 {
     FUNCTION_LOG_BEGIN(logLevelDebug);
         FUNCTION_LOG_PARAM(STRING, path);
@@ -1196,6 +1196,7 @@ storageS3New(
         FUNCTION_LOG_PARAM(STRING, bucket);
         FUNCTION_LOG_PARAM(STRING, endPoint);
         FUNCTION_LOG_PARAM(STRING_ID, uriStyle);
+        FUNCTION_LOG_PARAM(STRING, stsHost);
         FUNCTION_LOG_PARAM(STRING, region);
         FUNCTION_LOG_PARAM(STRING_ID, keyType);
         FUNCTION_TEST_PARAM(STRING, accessKey);
@@ -1285,7 +1286,7 @@ storageS3New(
 
                 this->credRole = strDup(credRole);
                 this->webIdTokenFile = strDup(webIdTokenFile);
-                this->credHost = S3_STS_HOST_STR;
+                this->credHost = stsHost != NULL ? stsHost : S3_STS_HOST_STR;
                 this->credExpirationTime = time(NULL);
                 this->credHttpClient = httpClientNew(
                     tlsClientNewP(
