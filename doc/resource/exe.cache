@@ -6901,7 +6901,7 @@
                "key" : {
                   "bash-wrap" : true,
                   "cmd" : [
-                     "sudo yum install meson gcc postgresql13-devel openssl-devel \\",
+                     "sudo yum install meson gcc postgresql14-devel openssl-devel \\",
                      "    libxml2-devel lz4-devel libzstd-devel bzip2-devel libyaml-devel libssh2-devel"
                   ],
                   "cmd-extra" : "-y 2>&1",
@@ -7133,7 +7133,7 @@
                "key" : {
                   "bash-wrap" : true,
                   "cmd" : [
-                     "sudo -u postgres /usr/pgsql-13/bin/initdb \\",
+                     "sudo -u postgres /usr/pgsql-15/bin/initdb \\",
                      "    -D /var/lib/pgsql/13/data -k -A peer"
                   ],
                   "host" : "pg-primary",
@@ -12596,7 +12596,7 @@
                "key" : {
                   "bash-wrap" : true,
                   "cmd" : [
-                     "sudo -u postgres /usr/pgsql-13/bin/initdb \\",
+                     "sudo -u postgres /usr/pgsql-15/bin/initdb \\",
                      "    -D /var/lib/pgsql/13/data -k -A peer"
                   ],
                   "host" : "pg-alt",
@@ -13273,7 +13273,7 @@
                "key" : {
                   "bash-wrap" : true,
                   "cmd" : [
-                     "sudo -u postgres /usr/pgsql-14/bin/initdb \\",
+                     "sudo -u postgres /usr/pgsql-15/bin/initdb \\",
                      "    -D /var/lib/pgsql/14/data -k -A peer"
                   ],
                   "host" : "pg-primary",
@@ -13288,9 +13288,9 @@
                   "bash-wrap" : true,
                   "cmd" : [
                      "sudo -u postgres sh -c 'cd /var/lib/pgsql && \\",
-                     "    /usr/pgsql-14/bin/pg_upgrade \\",
-                     "    --old-bindir=/usr/pgsql-13/bin \\",
-                     "    --new-bindir=/usr/pgsql-14/bin \\",
+                     "    /usr/pgsql-15/bin/pg_upgrade \\",
+                     "    --old-bindir=/usr/pgsql-14/bin \\",
+                     "    --new-bindir=/usr/pgsql-15/bin \\",
                      "    --old-datadir=/var/lib/pgsql/13/data \\",
                      "    --new-datadir=/var/lib/pgsql/14/data \\",
                      "    --old-options=\" -c config_file=/var/lib/pgsql/13/data/postgresql.conf\" \\",
@@ -13612,7 +13612,7 @@
                "key" : {
                   "bash-wrap" : true,
                   "cmd" : [
-                     "sudo -u postgres mkdir -p -m 700 /usr/pgsql-14/bin"
+                     "sudo -u postgres mkdir -p -m 700 /usr/pgsql-15/bin"
                   ],
                   "host" : "pg-standby",
                   "load-env" : true,
